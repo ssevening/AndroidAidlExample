@@ -1,11 +1,17 @@
 package com.ssevening.www.androidaidlexample;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ssevening.www.base.MyServices;
 import com.ssevening.www.moduleproduct.ProductActivity;
+
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Properties;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,5 +26,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        registerService(this);
+    }
+
+    public static void registerService(Context c) {
+        Properties props = new Properties();
+        try {
+            InputStream in = c.getResources().openRawResource(R.raw.services);
+            props.load(in);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+        for (Object object : props.keySet()) {
+            MyServices.register((String) object, (String) props.get(object));
+        }
     }
 }

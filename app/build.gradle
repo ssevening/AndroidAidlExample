@@ -17,6 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {// 配置源码路径，sourceSets是java插件引入的
+        main {
+            assets.srcDirs = ['assets']//asset文件分目录
+        }
+    }
+
 }
 
 dependencies {

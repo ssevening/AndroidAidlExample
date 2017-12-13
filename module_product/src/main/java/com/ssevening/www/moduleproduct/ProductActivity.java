@@ -14,7 +14,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.ssevening.www.base.MyServices;
 import com.ssevening.www.service.shopcart.IShopcartService;
 
 import java.util.List;
@@ -32,6 +34,15 @@ public class ProductActivity extends AppCompatActivity {
         tv_loading = (TextView) findViewById(R.id.tv_loading);
         Intent intent = getServiceIntent(this, IShopcartService.class);
         bindService(intent, shopcartServiceConnection, Context.BIND_AUTO_CREATE);
+
+        IShopcartService iShopcartService = MyServices.get(IShopcartService.class);
+        if (iShopcartService != null) {
+            try {
+                Toast.makeText(this, iShopcartService.getCartCount(), Toast.LENGTH_SHORT).show();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public Intent getServiceIntent(Context context, final Class<?> service_interface) {
@@ -85,7 +96,6 @@ public class ProductActivity extends AppCompatActivity {
         super.onDestroy();
         unbindService(shopcartServiceConnection);
     }
-
 
 
 }

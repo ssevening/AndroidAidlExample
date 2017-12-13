@@ -1,1 +1,1 @@
-include ':app', ':module_product', ':module_shopcart', ':service_shopcart'
+include ':app', ':module_product', ':module_shopcart', ':service_shopcart', ':base'
