@@ -12,7 +12,7 @@ public class MyServices {
     private static ServiceLruCache serviceLruCache = new ServiceLruCache(20);
     private static HashMap<String, String> properties;
 
-    public static <T> T get(Class<T> tClass) {
+    public static <T> T getServiceByClass(Class<T> tClass) {
         final T instance;
 
         String serviceName = tClass.getSimpleName();
