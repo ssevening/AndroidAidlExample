@@ -1,33 +1,62 @@
 {
   "project_info": {
-    "project_number": "479593540119",
-    "project_id": "bestcuts-ed983",
-    "storage_bucket": "bestcuts-ed983.appspot.com"
+    "project_number": "210709842255",
+    "project_id": "ssevening-superdeals",
+    "storage_bucket": "ssevening-superdeals.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:479593540119:android:add050579f4b03ccee4a52",
+        "mobilesdk_app_id": "1:210709842255:android:cfd83fd71d2537cbcddd3a",
         "android_client_info": {
           "package_name": "com.ssevening.bestcuts"
         }
       },
       "oauth_client": [
         {
-          "client_id": "479593540119-idl59f44jkds7pmomjppvvq9gn9j674b.apps.googleusercontent.com",
+          "client_id": "210709842255-93aguq0kdh7jngu2453qq0avcenrjrij.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDDJPpfzGu4Ham_TNmT0UfWVubgvCXsQ9A"
+          "current_key": "AIzaSyDsXHfDG04LZ6Mfxx_HIJRp8kiKTopI3aE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "479593540119-idl59f44jkds7pmomjppvvq9gn9j674b.apps.googleusercontent.com",
+              "client_id": "210709842255-93aguq0kdh7jngu2453qq0avcenrjrij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210709842255:android:393b37700c4e0089cddd3a",
+        "android_client_info": {
+          "package_name": "com.ssevening.shoppingtrends"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210709842255-93aguq0kdh7jngu2453qq0avcenrjrij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsXHfDG04LZ6Mfxx_HIJRp8kiKTopI3aE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210709842255-93aguq0kdh7jngu2453qq0avcenrjrij.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
