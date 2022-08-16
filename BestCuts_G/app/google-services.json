@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479593540119",
+    "project_id": "bestcuts-ed983",
+    "storage_bucket": "bestcuts-ed983.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479593540119:android:add050579f4b03ccee4a52",
+        "android_client_info": {
+          "package_name": "com.ssevening.bestcuts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479593540119-idl59f44jkds7pmomjppvvq9gn9j674b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDJPpfzGu4Ham_TNmT0UfWVubgvCXsQ9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479593540119-idl59f44jkds7pmomjppvvq9gn9j674b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="listbg">#EFEFEF</color>
+    <color name="drag_active_color">#80cccccc</color>
+</resources>
