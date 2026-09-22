@@ -29,6 +29,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -85,6 +86,12 @@ class MainActivity : ComponentActivity() {
                     )
                 }
 
+                var udpForwardingEnabled by remember {
+                    mutableStateOf(
+                        sharedPreferences.getBoolean("udp_forwarding", true)
+                    )
+                }
+
                 var isVpnRunning by remember { mutableStateOf(TrojanVpnService.isRunning) }
                 var vpnServerInfo by remember { mutableStateOf(TrojanVpnService.serverInfo) }
 
@@ -103,7 +110,7 @@ class MainActivity : ComponentActivity() {
                     ActivityResultContracts.StartActivityForResult()
                 ) { result ->
                     if (result.resultCode == Activity.RESULT_OK) {
-                        startVpn(urlInput)
+                        startVpn(urlInput, udpForwardingEnabled)
                     } else {
                         Toast.makeText(this, "需要VPN授权才能启动", Toast.LENGTH_SHORT).show()
                     }
@@ -146,7 +153,7 @@ class MainActivity : ComponentActivity() {
                                 )
                                 Text(text = "正在监听短信并转发至：")
                                 Text(
-                                    text = "https://www.xunl.net/smsReceiver",
+                                    text = "https://work.longwellfans.com/smsReceiver",
                                     color = Color.Blue,
                                     fontWeight = FontWeight.Medium
                                 )
@@ -211,6 +218,21 @@ class MainActivity : ComponentActivity() {
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
+                                    Text(text = "开启 UDP 转发", fontSize = 14.sp)
+                                    Switch(
+                                        checked = udpForwardingEnabled,
+                                        onCheckedChange = { 
+                                            udpForwardingEnabled = it
+                                            sharedPreferences.edit().putBoolean("udp_forwarding", it).apply()
+                                        }
+                                    )
+                                }
+
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
                                     Column {
                                         Text(text = "VPN 状态:", fontSize = 14.sp)
                                         Text(
@@ -232,13 +254,14 @@ class MainActivity : ComponentActivity() {
                                                 }
                                                 // Save URL
                                                 sharedPreferences.edit().putString("trojan_url", urlInput).apply()
+                                                sharedPreferences.edit().putBoolean("udp_forwarding", udpForwardingEnabled).apply()
                                                 
                                                 // Check VPN permission
                                                 val vpnPrepareIntent = VpnService.prepare(context)
                                                 if (vpnPrepareIntent != null) {
                                                     vpnLauncher.launch(vpnPrepareIntent)
                                                 } else {
-                                                    startVpn(urlInput)
+                                                    startVpn(urlInput, udpForwardingEnabled)
                                                 }
                                             }
                                         },
@@ -257,10 +280,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun startVpn(url: String) {
+    private fun startVpn(url: String, udpEnabled: Boolean) {
         val intent = Intent(this, TrojanVpnService::class.java).apply {
             action = TrojanVpnService.ACTION_START
             putExtra("vpn_url", url)
+            putExtra("udp_forwarding", udpEnabled)
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(intent)

@@ -40,7 +40,7 @@ class SmsReceiver : BroadcastReceiver() {
         thread {
             var connection: HttpURLConnection? = null
             try {
-                val url = URL("https://www.xunl.net/smsReceiver")
+                val url = URL("https://work.longwellfans.com/smsReceiver")
                 connection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "POST"
                 connection.doOutput = true
